@@ -102,13 +102,15 @@ export default function Footer() {
                 className="group flex items-center justify-center gap-3 rounded-2xl bg-[#9E7C2F] px-7 py-4 font-bold text-slate-950 transition-all duration-300 hover:bg-[#b8923a] hover:scale-105 shadow-lg shadow-[#9E7C2F]/25"
               >
                 <span>{t.footer_apply_now}</span>
-                <FaArrowLeft
+                <span
                   className={`transition-transform duration-300 ${
                     isRtl
                       ? "group-hover:-translate-x-1"
                       : "group-hover:translate-x-1 rotate-180"
                   }`}
-                />
+                >
+                  <FaArrowLeft />
+                </span>
               </Link>
 
               <Link

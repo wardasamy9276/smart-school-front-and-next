@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { LanguageProvider } from "@/context/LanguageContext";
-import Navbar from "@/app/navbar/Navbar"; // تأكدي من صحة مسار ملف Navbar لديكِ
-import "./globals.css";
-import Footer from "./Footer/Footer";
+import Navbar from "@/app/navbar/Navbar";
+import "@/app/globals.css";
+import Footer from "@/app/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,12 +31,12 @@ export default function RootLayout({
       dir="rtl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body>
         <LanguageProvider>
           <Navbar />
 
-          {/* محتوى الصفحات المتغيرة */}
           <main className="flex-1">{children}</main>
+
           <Footer />
         </LanguageProvider>
       </body>
