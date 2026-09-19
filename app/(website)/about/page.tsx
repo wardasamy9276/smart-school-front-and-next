@@ -6,12 +6,16 @@ import SchoolMilestones from "./SchoolMilestones";
 import LeadershipTeam from "./LeadershipTeam";
 import StatisticsCounter from "./StatisticsCounter";
 import CampusFacilities from "./CampusFacilities";
-import AccreditationPartners from "./AccreditationPartners";
-import CallToAction from "./CallToAction";
+
+import VideoGallery from "./VideoGallery";
+
+// import AccreditationPartners from "./AccreditationPartners";
+// import CallToAction from "./CallToAction";
 function page() {
   return (
     <div>
       <HeroSection />
+      <VideoGallery />
       <VisionMission />
       <CoreValues />
       {/* <FounderMessage /> */}

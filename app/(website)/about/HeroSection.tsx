@@ -27,7 +27,26 @@ export default function HeroSection() {
   const t = aboutHeroTranslations[language] || aboutHeroTranslations.ar;
 
   return (
-    <section className="relative bg-[#0B192C] text-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 text-center overflow-hidden shadow-xl">
+    <section
+      className="
+    relative
+    bg-[#0B192C]
+    text-white
+    min-h-screen
+    flex
+    items-center
+    justify-center
+    py-16
+    sm:py-20
+    md:py-24
+    px-4
+    sm:px-6
+    md:px-12
+    text-center
+    overflow-hidden
+    shadow-xl
+  "
+    >
       {/* خلفية متدرجة تجمع بين الكحلي الغامق ولمسة من اللون #0e7490 */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-[#0e7490]/30 via-[#0B192C] to-[#0B192C] z-0"></div>
 

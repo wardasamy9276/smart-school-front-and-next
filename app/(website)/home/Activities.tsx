@@ -27,6 +27,8 @@ export default function LmsSystemPage() {
   const [error, setError] = useState<string | null>(null);
 
   // جلب الـ 42 كارت مرة واحدة عند فتح الصفحة
+  // php artisan db:seed --class=LmsSystemSectionSeeder
+  // php artisan db:seed --class=LmsSystemSectionSeeder
   useEffect(() => {
     const fetchSections = async () => {
       try {

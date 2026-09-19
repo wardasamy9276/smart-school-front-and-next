@@ -47,7 +47,20 @@ export default function SchoolsSlider() {
   }
 
   return (
-    <section className="py-24 px-5 bg-[#080910] text-white relative overflow-hidden min-h-[700px]">
+    <section
+      className="
+        py-24
+        px-5
+        bg-[#080910]
+        text-white
+        relative
+        overflow-hidden
+        min-h-[700px]
+
+
+      "
+    >
+      {/* العنوان */}
       <h1
         className="
           text-center
@@ -61,13 +74,28 @@ export default function SchoolsSlider() {
         {language === "ar" ? "عملاؤنا" : "Our Clients"}
       </h1>
 
-      <div className="relative w-full max-w-[1920px] mx-auto">
+      {/* ================================
+          Slider Container
+          50% من عرض الصفحة ومتمركز
+      ================================= */}
+      <div
+        className="
+          relative
+          w-full
+ 
+              lg:w-2/3
+          mx-auto
+          overflow-hidden
+
+          
+        "
+      >
         <Swiper
           modules={[Autoplay, EffectCoverflow]}
-          effect={"coverflow"}
+          effect="coverflow"
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={"auto"}
+          slidesPerView="auto"
           coverflowEffect={{
             rotate: 25,
             stretch: 0,
@@ -88,7 +116,7 @@ export default function SchoolsSlider() {
               spaceBetween: -80,
             },
           }}
-          className=""
+          className="w-full"
         >
           {schools.map((school) => {
             const imageUrl = school.logo?.startsWith("http")
@@ -117,7 +145,9 @@ export default function SchoolsSlider() {
                     swiper-slide-active:shadow-[0_30px_70px_rgba(158,124,47,0.2)]
                   "
                 >
-                  {/* حاوية الصورة مع تقليل عرضها بداخل الكارت وإعطائها border-radius بدون خلفية أو حدود */}
+                  {/* ================================
+                      الصورة
+                  ================================= */}
                   <div
                     className="
                       w-full
@@ -128,7 +158,15 @@ export default function SchoolsSlider() {
                       relative
                     "
                   >
-                    <div className="w-[85%] h-full relative rounded-[20px] overflow-hidden">
+                    <div
+                      className="
+                        w-[85%]
+                        h-full
+                        relative
+                        rounded-[20px]
+                        overflow-hidden
+                      "
+                    >
                       <Image
                         src={imageUrl}
                         alt={
@@ -148,8 +186,19 @@ export default function SchoolsSlider() {
                     </div>
                   </div>
 
-                  {/* الجزء النصي */}
-                  <div className="text-center my-4 flex-grow flex flex-col justify-center">
+                  {/* ================================
+                      الجزء النصي
+                  ================================= */}
+                  <div
+                    className="
+                      text-center
+                      my-4
+                      flex-grow
+                      flex
+                      flex-col
+                      justify-center
+                    "
+                  >
                     <h3
                       className="
                         text-white
@@ -164,6 +213,7 @@ export default function SchoolsSlider() {
                     >
                       {language === "ar" ? school.name_ar : school.name_en}
                     </h3>
+
                     <p
                       className="
                         text-gray-400
@@ -178,7 +228,9 @@ export default function SchoolsSlider() {
                     </p>
                   </div>
 
-                  {/* الزر السفلي */}
+                  {/* ================================
+                      الزر السفلي
+                  ================================= */}
                   <div className="w-full mt-auto">
                     <Link href={`/schools/${school.id}`}>
                       <Button
@@ -212,7 +264,9 @@ export default function SchoolsSlider() {
         </Swiper>
       </div>
 
-      {/* زر "كل ما يخص الطلبة" بالأسفل */}
+      {/* ================================
+          زر كل ما يخص الطلبة
+      ================================= */}
       <div
         className="
           flex

@@ -3,15 +3,12 @@
 // const nextConfig: NextConfig = {
 
 // };
+
+// export default nextConfig;
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true,
-  },
-  basePath: "/smart-schools-complex",
-  assetPrefix: "/smart-schools-complex/",
+  // output: "export",
 };
 
 export default nextConfig;
