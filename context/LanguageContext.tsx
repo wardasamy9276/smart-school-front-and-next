@@ -162,6 +162,55 @@ const translations = {
 
     dashboard_refresh: "تحديث",
     dashboard_warning: "تنبيه",
+
+    /* =========================
+       Contact Us Page
+    ========================= */
+    title: "تواصل مع إدارة القبول والدعم",
+    subtitle:
+      "نحن هنا للإجابة عن استفساراتكم ومساعدتكم في كل ما يتعلق بالعام الدراسي الجديد.",
+    contactInfoTitle: "معلومات الاتصال",
+    contactInfoDesc:
+      "يمكنك زيارتنا في مقر المجمع أو التواصل عبر القنوات المتاحة طوال أيام العمل الرسمية.",
+    locationText: "مصر، القاهرة، المجمع الرئيسي للمدارس",
+    phoneText: "+20 100 000 0000",
+    whatsappText: "+20 100 000 0000 (واتساب)",
+    whatsappMsg: "السلام عليكم، أرغب بالاستفسار عن التسجيل في مجمع المدارس",
+    emailText: "admission@smartschools.edu.eg",
+    workingHours: "ساعات العمل: الأحد - الخميس (8:00 صباحاً - 3:00 مسائاً)",
+    formTitle: "أرسل لنا رسالة مباشرة",
+    successMsg: "تم إرسال رسالتك بنجاح! فريق الدعم والقبول سيتواصل معك قريباً.",
+    errorMsg: "حدث خطأ أثناء إرسال الرسالة.",
+    serverError: "تعذر الاتصال بالخادم، تأكد من تشغيل لارافيل.",
+    nameLabel: "الاسم الكامل",
+    namePlaceholder: "أدخل اسمك الكريم",
+    emailLabel: "البريد الإلكتروني",
+    subjectLabel: "موضوع الرسالة",
+    subjectPlaceholder: "استفسار بخصوص شروط القبول والمصروفات",
+    messageLabel: "نص الرسالة",
+    messagePlaceholder: "اكتب تفاصيل استفسارك هنا...",
+    submitBtn: "إرسال الرسالة",
+    sendingBtn: "جاري إرسال الرسالة...",
+    langSwitch: "English",
+    registerTitle: "إنشاء حساب جديد",
+    registerSubtitle: "أنشئ حسابك للوصول إلى لوحة التحكم",
+    fullNameLabel: "الاسم الكامل",
+    fullNamePlaceholder: "اكتب اسمك بالكامل",
+    phoneLabel: "رقم التليفون",
+    // emailLabel: "البريد الإلكتروني",
+    nextStepBtn: "التالي",
+    createPasswordTitle: "أنشئ كلمة المرور",
+    createPasswordSubtitle: "أدخل كلمة مرور لحماية حسابك",
+    passwordLabel: "كلمة المرور",
+    confirmPasswordLabel: "تأكيد كلمة المرور",
+    finishRegisterBtn: "إنشاء الحساب والدخول",
+    backStepBtn: "الرجوع وتعديل البيانات",
+    secureDataNotice: "جميع بياناتك محمية وآمنة",
+    errorNameRequired: "من فضلك أدخل الاسم",
+    errorPhoneRequired: "من فضلك أدخل رقم التليفون",
+    errorEmailRequired: "من فضلك أدخل البريد الإلكتروني",
+    errorPasswordLength: "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
+    errorPasswordMatch: "كلمة المرور غير متطابقة",
   },
 
   en: {
@@ -317,6 +366,58 @@ const translations = {
 
     dashboard_refresh: "Refresh",
     dashboard_warning: "Warning",
+
+    /* =========================
+       Contact Us Page
+    ========================= */
+    title: "Contact Admission & Support",
+    subtitle:
+      "We are here to answer your inquiries and assist you with everything related to the new academic year.",
+    contactInfoTitle: "Contact Information",
+    contactInfoDesc:
+      "You can visit us at the complex headquarters or communicate via available channels throughout official working days.",
+    locationText: "Egypt, Cairo, Main School Complex",
+    phoneText: "+20 100 000 0000",
+    whatsappText: "+20 100 000 0000 (WhatsApp)",
+    whatsappMsg:
+      "Hello, I would like to inquire about registration at the school complex",
+    emailText: "admission@smartschools.edu.eg",
+    workingHours: "Working Hours: Sun - Thu (8:00 AM - 3:00 PM)",
+    formTitle: "Send Us a Direct Message",
+    successMsg:
+      "Your message has been sent successfully! The admission & support team will contact you soon.",
+    errorMsg: "An error occurred while sending the message.",
+    serverError:
+      "Could not connect to the server, make sure Laravel is running.",
+    nameLabel: "Full Name",
+    namePlaceholder: "Enter your full name",
+    emailLabel: "Email Address",
+    subjectLabel: "Subject",
+    subjectPlaceholder: "Inquiry regarding admission terms and fees",
+    messageLabel: "Message",
+    messagePlaceholder: "Write your inquiry details here...",
+    submitBtn: "Send Message",
+    sendingBtn: "Sending Message...",
+    langSwitch: "العربية",
+    registerTitle: "Create New Account",
+    registerSubtitle: "Create your account to access the dashboard",
+    fullNameLabel: "Full Name",
+    fullNamePlaceholder: "Enter your full name",
+    phoneLabel: "Phone Number",
+    // emailLabel: "Email Address",
+    nextStepBtn: "Next",
+    createPasswordTitle: "Create Password",
+    createPasswordSubtitle: "Enter a password to secure your account",
+    passwordLabel: "Password",
+    confirmPasswordLabel: "Confirm Password",
+    finishRegisterBtn: "Create Account & Login",
+    backStepBtn: "Back to Edit Info",
+    secureDataNotice: "All your data is secure and protected",
+    errorNameRequired: "Please enter your name",
+    errorPhoneRequired: "Please enter your phone number",
+    errorEmailRequired: "Please enter your email",
+    errorPasswordLength: "Password must be at least 6 characters",
+    errorPasswordMatch: "Passwords do not match",
   },
 };
 

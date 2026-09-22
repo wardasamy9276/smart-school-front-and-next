@@ -9,16 +9,16 @@ const aboutHeroTranslations = {
     description:
       "نظُم تعليمية متكاملة تجمع بين الإدارة الذكية، التعليم المدمج، وبيئة تربوية محفزة لبناء جيل مبتكر وقادر على مواكبة العصر. نحن نؤمن بأن المستقبل يُبنى بالابتكار والتكنولوجيا المستدامة.",
     details:
-      "تتكون منظومة Pioneers E-School ERP من هيكل إداري وتقني متكامل تحت مراقبة خبراء في إدارة المدارس الدولية واللغات. يغطي النظام كافة الاحتياجات بدءاً من إدارة شؤون الطلاب، الحسابات، الموارد البشرية، وحتى الكنترول المدرسي، والبوابة الإلكترونية، والعيادة المدرسية، والمكتبات، والحافلات المدرسية، ليضمن تجربة رقمية شاملة لكل عناصر المنظومة التعليمية من طلاب، معلمين، وأولياء أمور.",
+      "تتكون منظومة Smart Schools Complex ERP من هيكل إداري وتقني متكامل تحت مراقبة خبراء في إدارة المدارس الدولية واللغات. يغطي النظام كافة الاحتياجات بدءاً من إدارة شؤون الطلاب، الحسابات، الموارد البشرية، وحتى الكنترول المدرسي، والبوابة الإلكترونية، والعيادة المدرسية، والمكتبات، والحافلات المدرسية، ليضمن تجربة رقمية شاملة لكل عناصر المنظومة التعليمية من طلاب، معلمين، وأولياء أمور.",
   },
   en: {
-    badge: "About Us - Smart Schools Complex",
+    badge: "About Us - Smart Schools Complex ERP",
     title:
       "Shaping the Educational Future with Cutting-Edge Technology and Global Standards",
     description:
       "Integrated educational systems combining smart management, blended learning, and a stimulating educational environment to build an innovative generation capable of keeping pace with the era.",
     details:
-      "The Pioneers E-School ERP system consists of an integrated administrative and technical framework supervised by international and language school management experts. The system covers all needs starting from student affairs, accounting, HR, school control, electronic portal, school clinic, libraries, and school buses, ensuring a comprehensive digital experience for all stakeholders.",
+      "The Smart Schools Complex ERP system consists of an integrated administrative and technical framework supervised by international and language school management experts. The system covers all needs starting from student affairs, accounting, HR, school control, electronic portal, school clinic, libraries, and school buses, ensuring a comprehensive digital experience for all stakeholders.",
   },
 };
 

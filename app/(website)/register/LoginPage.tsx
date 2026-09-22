@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
+import { FaGlobe } from "react-icons/fa";
 
 export default function Register() {
   const router = useRouter();
+  const { t, language, toggleLanguage } = useLanguage();
+  const isRtl = language === "ar";
 
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
@@ -20,17 +23,17 @@ export default function Register() {
     setError("");
 
     if (!name.trim()) {
-      setError("من فضلك أدخل الاسم");
+      setError(t.errorNameRequired || "من فضلك أدخل الاسم");
       return;
     }
 
     if (!phone.trim()) {
-      setError("من فضلك أدخل رقم التليفون");
+      setError(t.errorPhoneRequired || "من فضلك أدخل رقم التليفون");
       return;
     }
 
     if (!email.trim()) {
-      setError("من فضلك أدخل البريد الإلكتروني");
+      setError(t.errorEmailRequired || "من فضلك أدخل البريد الإلكتروني");
       return;
     }
 
@@ -42,12 +45,14 @@ export default function Register() {
     setError("");
 
     if (password.length < 6) {
-      setError("كلمة المرور يجب أن تكون 6 أحرف على الأقل");
+      setError(
+        t.errorPasswordLength || "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
+      );
       return;
     }
 
     if (password !== confirmPassword) {
-      setError("كلمة المرور غير متطابقة");
+      setError(t.errorPasswordMatch || "كلمة المرور غير متطابقة");
       return;
     }
 
@@ -56,18 +61,29 @@ export default function Register() {
 
   return (
     <main
-      dir="rtl"
-      className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-slate-100 flex items-center justify-center px-4 py-10"
+      dir={isRtl ? "rtl" : "ltr"}
+      className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-slate-100 flex flex-col items-center justify-center px-4 py-10 relative"
     >
+      {/* زر تبديل اللغة */}
+      {/* <div className="absolute top-6 end-6">
+        <button
+          onClick={toggleLanguage}
+          className="flex items-center gap-2 bg-white border border-slate-200 px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50 transition cursor-pointer"
+        >
+          <FaGlobe className="text-[#067492]" />
+          {t.langSwitch || (isRtl ? "English" : "عربي")}
+        </button>
+      </div> */}
+
       <div className="w-full max-w-md">
         {/* العنوان */}
         <div className="text-center mb-6">
           <h1 className="text-2xl font-extrabold text-slate-900">
-            إنشاء حساب جديد
+            {t.registerTitle || "إنشاء حساب جديد"}
           </h1>
 
           <p className="text-sm text-slate-500 mt-2">
-            أنشئ حسابك للوصول إلى لوحة التحكم
+            {t.registerSubtitle || "أنشئ حسابك للوصول إلى لوحة التحكم"}
           </p>
         </div>
 
@@ -84,21 +100,21 @@ export default function Register() {
             <form onSubmit={handleUserData} className="space-y-5">
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">
-                  الاسم الكامل
+                  {t.fullNameLabel || "الاسم الكامل"}
                 </label>
 
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="اكتب اسمك بالكامل"
-                  className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#067492] focus:bg-white focus:ring-2 focus:ring-cyan-100"
+                  placeholder={t.fullNamePlaceholder || "اكتب اسمك بالكامل"}
+                  className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#067492] focus:bg-white focus:ring-2 focus:ring-cyan-100 text-slate-800"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">
-                  رقم التليفون
+                  {t.phoneLabel || "رقم التليفون"}
                 </label>
 
                 <input
@@ -106,13 +122,13 @@ export default function Register() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="01xxxxxxxxx"
-                  className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#067492] focus:bg-white focus:ring-2 focus:ring-cyan-100"
+                  className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#067492] focus:bg-white focus:ring-2 focus:ring-cyan-100 text-slate-800"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">
-                  البريد الإلكتروني
+                  {t.emailLabel || "البريد الإلكتروني"}
                 </label>
 
                 <input
@@ -120,20 +136,16 @@ export default function Register() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="example@email.com"
-                  className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#067492] focus:bg-white focus:ring-2 focus:ring-cyan-100"
+                  className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#067492] focus:bg-white focus:ring-2 focus:ring-cyan-100 text-slate-800"
                 />
               </div>
 
-              <Link
-                // href="/login"
-                href="/dashboard"
-                className="w-full h-12 rounded-xl
-                 bg-[#067492] hover:bg-[#055d75] 
-                 flex items-center justify-center text-white 
-                 font-bold transition"
+              <button
+                type="submit"
+                className="w-full h-12 rounded-xl bg-[#067492] hover:bg-[#055d75] flex items-center justify-center text-white font-bold transition cursor-pointer"
               >
-                تسجيل الدخول
-              </Link>
+                {t.nextStepBtn || "التالي"}
+              </button>
             </form>
           )}
 
@@ -142,17 +154,17 @@ export default function Register() {
             <form onSubmit={handleRegister} className="space-y-5">
               <div className="text-center mb-6">
                 <h2 className="text-lg font-bold text-slate-900">
-                  أنشئ كلمة المرور
+                  {t.createPasswordTitle || "أنشئ كلمة المرور"}
                 </h2>
 
                 <p className="text-xs text-slate-500 mt-1">
-                  أدخل كلمة مرور لحماية حسابك
+                  {t.createPasswordSubtitle || "أدخل كلمة مرور لحماية حسابك"}
                 </p>
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">
-                  كلمة المرور
+                  {t.passwordLabel || "كلمة المرور"}
                 </label>
 
                 <input
@@ -160,13 +172,13 @@ export default function Register() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#067492] focus:bg-white focus:ring-2 focus:ring-cyan-100"
+                  className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#067492] focus:bg-white focus:ring-2 focus:ring-cyan-100 text-slate-800"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">
-                  تأكيد كلمة المرور
+                  {t.confirmPasswordLabel || "تأكيد كلمة المرور"}
                 </label>
 
                 <input
@@ -174,15 +186,15 @@ export default function Register() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#067492] focus:bg-white focus:ring-2 focus:ring-cyan-100"
+                  className="w-full h-12 rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none focus:border-[#067492] focus:bg-white focus:ring-2 focus:ring-cyan-100 text-slate-800"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full h-12 rounded-xl bg-[#067492] hover:bg-[#055d75] text-white font-bold transition"
+                className="w-full h-12 rounded-xl bg-[#067492] hover:bg-[#055d75] text-white font-bold transition cursor-pointer"
               >
-                إنشاء الحساب والدخول
+                {t.finishRegisterBtn || "إنشاء الحساب والدخول"}
               </button>
 
               <button
@@ -191,16 +203,16 @@ export default function Register() {
                   setStep(1);
                   setError("");
                 }}
-                className="w-full text-sm text-slate-500 hover:text-[#067492]"
+                className="w-full text-sm text-slate-500 hover:text-[#067492] cursor-pointer"
               >
-                الرجوع وتعديل البيانات
+                {t.backStepBtn || "الرجوع وتعديل البيانات"}
               </button>
             </form>
           )}
         </div>
 
         <p className="text-center text-xs text-slate-400 mt-6">
-          جميع بياناتك محمية وآمنة
+          {t.secureDataNotice || "جميع بياناتك محمية وآمنة"}
         </p>
       </div>
     </main>

@@ -1,13 +1,24 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface School {
   id: number;
+
   name: string;
+  name_ar: string | null;
+  name_en: string | null;
+  name_it: string | null;
+
   email: string | null;
   phone: string | null;
+
   address: string | null;
+  address_ar: string | null;
+  address_en: string | null;
+  address_it: string | null;
+
   image: string | null;
 }
 
@@ -23,8 +34,181 @@ interface SchoolDraft {
 }
 
 export default function SchoolsPage() {
+  const { language } = useLanguage();
+
+  const currentLanguage = String(language);
+
+  const isArabic = currentLanguage === "ar";
+  const isItalian = currentLanguage === "it";
+
   const API_URL = "http://localhost:8000/api";
   const STORAGE_URL = "http://localhost:8000/storage";
+
+  // =========================
+  // Translation
+  // =========================
+
+  const t = {
+    loading: isArabic
+      ? "جاري التحميل..."
+      : isItalian
+        ? "Caricamento..."
+        : "Loading...",
+
+    schools: isArabic ? "المدارس" : isItalian ? "Scuole" : "Schools",
+
+    manageSchools: isArabic
+      ? "إدارة المدارس"
+      : isItalian
+        ? "Gestione delle scuole"
+        : "Manage schools",
+
+    addSchool: isArabic
+      ? "إضافة مدرسة"
+      : isItalian
+        ? "Aggiungi scuola"
+        : "Add School",
+
+    restoreSchool: isArabic
+      ? "استعادة المدرسة"
+      : isItalian
+        ? "Ripristina scuola"
+        : "Restore School",
+
+    schoolImage: isArabic
+      ? "صورة المدرسة"
+      : isItalian
+        ? "Immagine della scuola"
+        : "School Image",
+
+    addSchoolImage: isArabic
+      ? "إضافة صورة المدرسة"
+      : isItalian
+        ? "Aggiungi immagine della scuola"
+        : "Add School Image",
+
+    changeImage: isArabic
+      ? "تغيير الصورة"
+      : isItalian
+        ? "Cambia immagine"
+        : "Change Image",
+
+    schoolName: isArabic
+      ? "اسم المدرسة"
+      : isItalian
+        ? "Nome della scuola"
+        : "School Name",
+
+    email: isArabic ? "البريد الإلكتروني" : "Email",
+
+    phone: isArabic ? "الهاتف" : isItalian ? "Telefono" : "Phone",
+
+    address: isArabic ? "العنوان" : isItalian ? "Indirizzo" : "Address",
+
+    save: isArabic ? "حفظ" : isItalian ? "Salva" : "Save",
+
+    saving: isArabic
+      ? "جاري الحفظ..."
+      : isItalian
+        ? "Salvataggio..."
+        : "Saving...",
+
+    cancel: isArabic ? "إلغاء" : isItalian ? "Annulla" : "Cancel",
+
+    edit: isArabic ? "تعديل" : isItalian ? "Modifica" : "Edit",
+
+    hideSchool: isArabic
+      ? "إخفاء المدرسة"
+      : isItalian
+        ? "Nascondi scuola"
+        : "Hide School",
+
+    noSchools: isArabic
+      ? "لا توجد مدارس"
+      : isItalian
+        ? "Nessuna scuola trovata"
+        : "No Schools Found",
+
+    addFirstSchool: isArabic
+      ? "اضغط على إضافة مدرسة لإضافة أول مدرسة."
+      : isItalian
+        ? "Fai clic su Aggiungi scuola per aggiungere la prima scuola."
+        : "Click Add School to add your first school.",
+
+    schoolRequired: isArabic
+      ? "اسم المدرسة مطلوب"
+      : isItalian
+        ? "Il nome della scuola è obbligatorio"
+        : "School name is required",
+
+    addSuccess: isArabic
+      ? "تمت إضافة المدرسة بنجاح"
+      : isItalian
+        ? "Scuola aggiunta con successo"
+        : "School added successfully",
+
+    editSuccess: isArabic
+      ? "تم تعديل المدرسة بنجاح"
+      : isItalian
+        ? "Scuola modificata con successo"
+        : "School updated successfully",
+
+    fetchError: isArabic
+      ? "حدث خطأ أثناء تحميل المدارس"
+      : isItalian
+        ? "Si è verificato un errore durante il caricamento delle scuole"
+        : "Failed to fetch schools",
+
+    addError: isArabic
+      ? "حدث خطأ أثناء إضافة المدرسة"
+      : isItalian
+        ? "Si è verificato un errore أثناء إضافة المدرسة"
+        : "An error occurred while adding the school",
+
+    editError: isArabic
+      ? "حدث خطأ أثناء تعديل المدرسة"
+      : isItalian
+        ? "Si è verificato un errore durante la modifica della scuola"
+        : "An error occurred while editing the school",
+
+    id: isArabic ? "رقم" : "ID",
+
+    preview: isArabic ? "معاينة" : isItalian ? "Anteprima" : "Preview",
+  };
+
+  const direction = isArabic ? "rtl" : "ltr";
+
+  // =========================
+  // Translation Helpers
+  // =========================
+
+  const getSchoolName = (school: School) => {
+    if (isArabic) {
+      return school.name_ar || school.name;
+    }
+
+    if (isItalian) {
+      return school.name_it || school.name;
+    }
+
+    return school.name_en || school.name;
+  };
+
+  const getSchoolAddress = (school: School) => {
+    if (isArabic) {
+      return school.address_ar || school.address;
+    }
+
+    if (isItalian) {
+      return school.address_it || school.address;
+    }
+
+    return school.address_en || school.address;
+  };
+
+  // =========================
+  // State
+  // =========================
 
   const [schools, setSchools] = useState<School[]>([]);
   const [drafts, setDrafts] = useState<SchoolDraft[]>([]);
@@ -89,7 +273,7 @@ export default function SchoolsPage() {
       const data = await response.json().catch(() => null);
 
       if (!response.ok) {
-        throw new Error(data?.message || "Failed to fetch schools");
+        throw new Error(data?.message || t.fetchError);
       }
 
       const schoolsData = Array.isArray(data) ? data : data?.data || [];
@@ -98,21 +282,21 @@ export default function SchoolsPage() {
     } catch (error) {
       console.error("GET SCHOOLS ERROR:", error);
 
-      setError(
-        error instanceof Error ? error.message : "حدث خطأ أثناء تحميل المدارس",
-      );
+      setError(error instanceof Error ? error.message : t.fetchError);
     }
   };
 
   useEffect(() => {
     const load = async () => {
       setLoading(true);
+
       await getSchools();
+
       setLoading(false);
     };
 
     load();
-  }, []);
+  }, [currentLanguage]);
 
   // =========================
   // ADD SCHOOL CARD
@@ -148,7 +332,12 @@ export default function SchoolsPage() {
 
     setDrafts((prev) =>
       prev.map((draft) =>
-        draft.tempId === tempId ? { ...draft, [name]: value } : draft,
+        draft.tempId === tempId
+          ? {
+              ...draft,
+              [name]: value,
+            }
+          : draft,
       ),
     );
   };
@@ -169,7 +358,9 @@ export default function SchoolsPage() {
 
     setDrafts((prev) =>
       prev.map((draft) => {
-        if (draft.tempId !== tempId) return draft;
+        if (draft.tempId !== tempId) {
+          return draft;
+        }
 
         if (draft.imagePreview) {
           URL.revokeObjectURL(draft.imagePreview);
@@ -211,7 +402,7 @@ export default function SchoolsPage() {
     e.preventDefault();
 
     if (!draft.name.trim()) {
-      setError("اسم المدرسة مطلوب");
+      setError(t.schoolRequired);
       return;
     }
 
@@ -220,15 +411,23 @@ export default function SchoolsPage() {
 
       setDrafts((prev) =>
         prev.map((item) =>
-          item.tempId === draft.tempId ? { ...item, saving: true } : item,
+          item.tempId === draft.tempId
+            ? {
+                ...item,
+                saving: true,
+              }
+            : item,
         ),
       );
 
       const formData = new FormData();
 
       formData.append("name", draft.name.trim());
+
       formData.append("email", draft.email.trim());
+
       formData.append("phone", draft.phone.trim());
+
       formData.append("address", draft.address.trim());
 
       if (draft.image) {
@@ -246,7 +445,7 @@ export default function SchoolsPage() {
       const data = await response.json().catch(() => null);
 
       if (!response.ok) {
-        throw new Error(data?.message || "حدث خطأ أثناء إضافة المدرسة");
+        throw new Error(data?.message || t.addError);
       }
 
       if (data?.data) {
@@ -261,17 +460,20 @@ export default function SchoolsPage() {
         URL.revokeObjectURL(draft.imagePreview);
       }
 
-      alert("تمت إضافة المدرسة بنجاح");
+      alert(t.addSuccess);
     } catch (error) {
       console.error("ADD SCHOOL ERROR:", error);
 
-      setError(
-        error instanceof Error ? error.message : "حدث خطأ أثناء إضافة المدرسة",
-      );
+      setError(error instanceof Error ? error.message : t.addError);
 
       setDrafts((prev) =>
         prev.map((item) =>
-          item.tempId === draft.tempId ? { ...item, saving: false } : item,
+          item.tempId === draft.tempId
+            ? {
+                ...item,
+                saving: false,
+              }
+            : item,
         ),
       );
     }
@@ -285,10 +487,27 @@ export default function SchoolsPage() {
     setEditingSchoolId(school.id);
 
     setEditData({
-      name: school.name,
+      name:
+        (isArabic
+          ? school.name_ar
+          : isItalian
+            ? school.name_it
+            : school.name_en) ||
+        school.name ||
+        "",
+
       email: school.email || "",
+
       phone: school.phone || "",
-      address: school.address || "",
+
+      address:
+        (isArabic
+          ? school.address_ar
+          : isItalian
+            ? school.address_it
+            : school.address_en) ||
+        school.address ||
+        "",
     });
 
     setError("");
@@ -320,7 +539,7 @@ export default function SchoolsPage() {
 
   const saveEditSchool = async (id: number) => {
     if (!editData.name.trim()) {
-      setError("اسم المدرسة مطلوب");
+      setError(t.schoolRequired);
       return;
     }
 
@@ -344,14 +563,19 @@ export default function SchoolsPage() {
       const data = await response.json().catch(() => null);
 
       if (!response.ok) {
-        throw new Error(data?.message || "حدث خطأ أثناء تعديل المدرسة");
+        throw new Error(data?.message || t.editError);
       }
 
       const updatedSchool = data?.data || data;
 
       setSchools((prev) =>
         prev.map((school) =>
-          school.id === id ? { ...school, ...updatedSchool } : school,
+          school.id === id
+            ? {
+                ...school,
+                ...updatedSchool,
+              }
+            : school,
         ),
       );
 
@@ -364,13 +588,11 @@ export default function SchoolsPage() {
         address: "",
       });
 
-      alert("تم تعديل المدرسة بنجاح");
+      alert(t.editSuccess);
     } catch (error) {
       console.error("EDIT SCHOOL ERROR:", error);
 
-      setError(
-        error instanceof Error ? error.message : "حدث خطأ أثناء تعديل المدرسة",
-      );
+      setError(error instanceof Error ? error.message : t.editError);
     }
   };
 
@@ -387,7 +609,9 @@ export default function SchoolsPage() {
   // =========================
 
   const getImageUrl = (image: string | null) => {
-    if (!image) return null;
+    if (!image) {
+      return null;
+    }
 
     if (image.startsWith("http://") || image.startsWith("https://")) {
       return image;
@@ -402,8 +626,11 @@ export default function SchoolsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-400">Loading...</p>
+      <div
+        dir={direction}
+        className="min-h-screen flex items-center justify-center"
+      >
+        <p className="text-gray-400">{t.loading}</p>
       </div>
     );
   }
@@ -413,14 +640,17 @@ export default function SchoolsPage() {
   );
 
   return (
-    <div className="min-h-screen">
-      {/* Restore */}
+    <div dir={direction} className="min-h-screen">
+      {/* =========================
+          RESTORE
+      ========================= */}
 
       {hiddenSchools.length > 0 && (
         <button
           type="button"
           onClick={() => {
             const id = hiddenSchools[hiddenSchools.length - 1];
+
             restoreSchool(id);
           }}
           className="
@@ -429,23 +659,26 @@ export default function SchoolsPage() {
             hover:bg-[#2a3348]
             text-white
             font-bold
-            px-5 py-3
+            px-4 py-2.5
             rounded-xl
             transition
-            mb-5
+            mb-4
+            text-sm
           "
         >
-          ↩ Restore School
+          ↩ {t.restoreSchool}
         </button>
       )}
 
-      {/* Header */}
+      {/* =========================
+          HEADER
+      ========================= */}
 
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-white">Schools</h1>
+          <h1 className="text-2xl font-bold text-white">{t.schools}</h1>
 
-          <p className="text-gray-400 mt-1">Manage schools</p>
+          <p className="text-gray-400 mt-1 text-sm">{t.manageSchools}</p>
         </div>
 
         <button
@@ -457,17 +690,21 @@ export default function SchoolsPage() {
             hover:bg-[#b58d36]
             text-black
             font-bold
-            px-5 py-3
+            px-4 py-2.5
             rounded-xl
             transition
+            text-sm
           "
         >
-          <span className="text-xl">+</span>
-          Add School
+          <span className="text-lg">+</span>
+
+          {t.addSchool}
         </button>
       </div>
 
-      {/* Error */}
+      {/* =========================
+          ERROR
+      ========================= */}
 
       {error && (
         <div
@@ -475,16 +712,19 @@ export default function SchoolsPage() {
             bg-red-500/10
             border border-red-500/30
             text-red-400
-            p-4
+            p-3
             rounded-xl
-            mb-6
+            mb-5
+            text-sm
           "
         >
           {error}
         </div>
       )}
 
-      {/* GRID */}
+      {/* =========================
+          GRID
+      ========================= */}
 
       <div
         className="
@@ -493,7 +733,7 @@ export default function SchoolsPage() {
           sm:grid-cols-2
           lg:grid-cols-3
           xl:grid-cols-4
-          gap-5
+          gap-4
         "
       >
         {/* =========================
@@ -507,14 +747,14 @@ export default function SchoolsPage() {
             className="
               bg-[#121622]
               border border-[#9E7C2F]
-              rounded-2xl
+              rounded-xl
               overflow-hidden
               shadow-lg
             "
           >
             <div
               className="
-                h-44
+                h-32
                 bg-[#181e2b]
                 flex items-center justify-center
                 overflow-hidden
@@ -524,8 +764,12 @@ export default function SchoolsPage() {
               {draft.imagePreview ? (
                 <img
                   src={draft.imagePreview}
-                  alt="Preview"
-                  className="w-full h-full object-cover"
+                  alt={t.preview}
+                  className="
+                    w-full
+                    h-full
+                    object-cover
+                  "
                 />
               ) : (
                 <label
@@ -534,14 +778,15 @@ export default function SchoolsPage() {
                     cursor-pointer
                     flex flex-col
                     items-center justify-center
-                    w-full h-full
+                    w-full
+                    h-full
                     text-gray-400
                     hover:text-white
                   "
                 >
-                  <span className="text-5xl mb-2">📷</span>
+                  <span className="text-4xl mb-1">📷</span>
 
-                  <span className="text-sm">Add School Image</span>
+                  <span className="text-xs">{t.addSchoolImage}</span>
                 </label>
               )}
 
@@ -557,37 +802,39 @@ export default function SchoolsPage() {
                 <label
                   htmlFor={`school-image-${draft.tempId}`}
                   className="
-                    absolute bottom-3 right-3
+                    absolute bottom-2 right-2
                     bg-black/70
                     text-white
-                    px-3 py-2
+                    px-2.5
+                    py-1.5
                     rounded-lg
                     cursor-pointer
-                    text-xs
+                    text-[11px]
                   "
                 >
-                  Change Image
+                  {t.changeImage}
                 </label>
               )}
             </div>
 
-            <div className="p-5">
+            <div className="p-3">
               <input
                 type="text"
                 name="name"
                 value={draft.name}
                 onChange={(e) => handleDraftChange(draft.tempId, e)}
-                placeholder="School Name"
+                placeholder={t.schoolName}
                 className="
                   w-full
                   bg-[#181e2b]
                   border border-[#1e2536]
-                  rounded-xl
-                  px-4 py-3
+                  rounded-lg
+                  px-3 py-2
                   text-white
+                  text-sm
                   outline-none
                   focus:border-[#9E7C2F]
-                  mb-3
+                  mb-2
                 "
               />
 
@@ -596,17 +843,18 @@ export default function SchoolsPage() {
                 name="email"
                 value={draft.email}
                 onChange={(e) => handleDraftChange(draft.tempId, e)}
-                placeholder="Email"
+                placeholder={t.email}
                 className="
                   w-full
                   bg-[#181e2b]
                   border border-[#1e2536]
-                  rounded-xl
-                  px-4 py-3
+                  rounded-lg
+                  px-3 py-2
                   text-white
+                  text-sm
                   outline-none
                   focus:border-[#9E7C2F]
-                  mb-3
+                  mb-2
                 "
               />
 
@@ -615,17 +863,18 @@ export default function SchoolsPage() {
                 name="phone"
                 value={draft.phone}
                 onChange={(e) => handleDraftChange(draft.tempId, e)}
-                placeholder="Phone"
+                placeholder={t.phone}
                 className="
                   w-full
                   bg-[#181e2b]
                   border border-[#1e2536]
-                  rounded-xl
-                  px-4 py-3
+                  rounded-lg
+                  px-3 py-2
                   text-white
+                  text-sm
                   outline-none
                   focus:border-[#9E7C2F]
-                  mb-3
+                  mb-2
                 "
               />
 
@@ -633,19 +882,20 @@ export default function SchoolsPage() {
                 name="address"
                 value={draft.address}
                 onChange={(e) => handleDraftChange(draft.tempId, e)}
-                placeholder="Address"
-                rows={3}
+                placeholder={t.address}
+                rows={2}
                 className="
                   w-full
                   bg-[#181e2b]
                   border border-[#1e2536]
-                  rounded-xl
-                  px-4 py-3
+                  rounded-lg
+                  px-3 py-2
                   text-white
+                  text-sm
                   outline-none
                   focus:border-[#9E7C2F]
                   resize-none
-                  mb-4
+                  mb-3
                 "
               />
 
@@ -659,13 +909,14 @@ export default function SchoolsPage() {
                     hover:bg-[#b58d36]
                     text-black
                     font-bold
-                    py-2.5
-                    rounded-xl
+                    py-2
+                    rounded-lg
                     transition
                     disabled:opacity-50
+                    text-sm
                   "
                 >
-                  {draft.saving ? "Saving..." : "Save"}
+                  {draft.saving ? t.saving : t.save}
                 </button>
 
                 <button
@@ -673,14 +924,15 @@ export default function SchoolsPage() {
                   onClick={() => deleteDraft(draft.tempId)}
                   disabled={draft.saving}
                   className="
-                    w-12
+                    w-10
                     flex items-center justify-center
                     bg-red-500/10
                     border border-red-500/20
                     text-red-500
                     hover:bg-red-500/20
-                    rounded-xl
+                    rounded-lg
                   "
+                  title={t.cancel}
                 >
                   🗑️
                 </button>
@@ -697,67 +949,65 @@ export default function SchoolsPage() {
           <div
             key={school.id}
             className="
-              bg-[#121622]
-              border border-[#1e2536]
-              rounded-2xl
-              overflow-hidden
-              hover:border-[#9E7C2F]
-              transition
-              group
-            "
+                bg-[#121622]
+                border border-[#1e2536]
+                rounded-xl
+                overflow-hidden
+                hover:border-[#9E7C2F]
+                transition
+                group
+              "
           >
             {/* IMAGE */}
 
             <div
               className="
-                h-44
-                bg-[#181e2b]
-                flex items-center justify-center
-                overflow-hidden
-              "
+                  h-32
+                  bg-[#181e2b]
+                  flex items-center justify-center
+                  overflow-hidden
+                "
             >
               {school.image ? (
                 <img
                   src={getImageUrl(school.image) || ""}
-                  alt={school.name}
+                  alt={getSchoolName(school)}
                   className="
-                    w-full h-full
-                    object-cover
-                    group-hover:scale-105
-                    transition
-                    duration-300
-                  "
+                      w-full
+                      h-full
+                      object-cover
+                      group-hover:scale-105
+                      transition
+                      duration-300
+                    "
                 />
               ) : (
-                <div className="text-6xl">🏫</div>
+                <div className="text-5xl">🏫</div>
               )}
             </div>
 
-            {/* =========================
-                NORMAL / EDIT MODE
-            ========================= */}
+            {/* NORMAL / EDIT MODE */}
 
-            <div className="p-5">
+            <div className="p-3">
               {editingSchoolId === school.id ? (
-                /* EDIT MODE */
-
                 <div>
                   <input
                     type="text"
                     name="name"
                     value={editData.name}
                     onChange={handleEditChange}
-                    placeholder="School Name"
+                    placeholder={t.schoolName}
                     className="
-                      w-full
-                      bg-[#181e2b]
-                      border border-[#9E7C2F]
-                      rounded-xl
-                      px-4 py-3
-                      text-white
-                      outline-none
-                      mb-3
-                    "
+                        w-full
+                        bg-[#181e2b]
+                        border border-[#9E7C2F]
+                        rounded-lg
+                        px-3 py-2
+                        text-white
+                        text-sm
+                        outline-none
+                        mb-2
+                      "
                   />
 
                   <input
@@ -765,17 +1015,18 @@ export default function SchoolsPage() {
                     name="email"
                     value={editData.email}
                     onChange={handleEditChange}
-                    placeholder="Email"
+                    placeholder={t.email}
                     className="
-                      w-full
-                      bg-[#181e2b]
-                      border border-[#1e2536]
-                      rounded-xl
-                      px-4 py-3
-                      text-white
-                      outline-none
-                      mb-3
-                    "
+                        w-full
+                        bg-[#181e2b]
+                        border border-[#1e2536]
+                        rounded-lg
+                        px-3 py-2
+                        text-white
+                        text-sm
+                        outline-none
+                        mb-2
+                      "
                   />
 
                   <input
@@ -783,36 +1034,38 @@ export default function SchoolsPage() {
                     name="phone"
                     value={editData.phone}
                     onChange={handleEditChange}
-                    placeholder="Phone"
+                    placeholder={t.phone}
                     className="
-                      w-full
-                      bg-[#181e2b]
-                      border border-[#1e2536]
-                      rounded-xl
-                      px-4 py-3
-                      text-white
-                      outline-none
-                      mb-3
-                    "
+                        w-full
+                        bg-[#181e2b]
+                        border border-[#1e2536]
+                        rounded-lg
+                        px-3 py-2
+                        text-white
+                        text-sm
+                        outline-none
+                        mb-2
+                      "
                   />
 
                   <textarea
                     name="address"
                     value={editData.address}
                     onChange={handleEditChange}
-                    placeholder="Address"
-                    rows={3}
+                    placeholder={t.address}
+                    rows={2}
                     className="
-                      w-full
-                      bg-[#181e2b]
-                      border border-[#1e2536]
-                      rounded-xl
-                      px-4 py-3
-                      text-white
-                      outline-none
-                      resize-none
-                      mb-4
-                    "
+                        w-full
+                        bg-[#181e2b]
+                        border border-[#1e2536]
+                        rounded-lg
+                        px-3 py-2
+                        text-white
+                        text-sm
+                        outline-none
+                        resize-none
+                        mb-3
+                      "
                   />
 
                   <div className="flex gap-2">
@@ -820,66 +1073,68 @@ export default function SchoolsPage() {
                       type="button"
                       onClick={() => saveEditSchool(school.id)}
                       className="
-                        flex-1
-                        bg-[#9E7C2F]
-                        hover:bg-[#b58d36]
-                        text-black
-                        font-bold
-                        py-2.5
-                        rounded-xl
-                      "
+                          flex-1
+                          bg-[#9E7C2F]
+                          hover:bg-[#b58d36]
+                          text-black
+                          font-bold
+                          py-2
+                          rounded-lg
+                          text-sm
+                        "
                     >
-                      Save
+                      {t.save}
                     </button>
 
                     <button
                       type="button"
                       onClick={cancelEdit}
                       className="
-                        flex-1
-                        bg-[#1e2536]
-                        hover:bg-[#2a3348]
-                        text-white
-                        font-bold
-                        py-2.5
-                        rounded-xl
-                      "
+                          flex-1
+                          bg-[#1e2536]
+                          hover:bg-[#2a3348]
+                          text-white
+                          font-bold
+                          py-2
+                          rounded-lg
+                          text-sm
+                        "
                     >
-                      Cancel
+                      {t.cancel}
                     </button>
                   </div>
                 </div>
               ) : (
-                /* NORMAL MODE */
-
                 <>
                   <h2
                     className="
-                      text-lg
-                      font-bold
-                      text-white
-                      line-clamp-1
-                    "
+                        text-base
+                        font-bold
+                        text-white
+                        line-clamp-1
+                      "
                   >
-                    {school.name}
+                    {getSchoolName(school)}
                   </h2>
 
-                  <p className="text-gray-500 text-xs mt-1">ID #{school.id}</p>
+                  <p className="text-gray-500 text-[11px] mt-1">
+                    {t.id} #{school.id}
+                  </p>
 
-                  <div className="mt-4 space-y-2">
+                  <div className="mt-3 space-y-1.5">
                     {school.email && (
-                      <p className="text-gray-400 text-sm truncate">
+                      <p className="text-gray-400 text-xs truncate">
                         ✉️ {school.email}
                       </p>
                     )}
 
                     {school.phone && (
-                      <p className="text-gray-400 text-sm">📞 {school.phone}</p>
+                      <p className="text-gray-400 text-xs">📞 {school.phone}</p>
                     )}
 
-                    {school.address && (
-                      <p className="text-gray-400 text-sm truncate">
-                        📍 {school.address}
+                    {getSchoolAddress(school) && (
+                      <p className="text-gray-400 text-xs truncate">
+                        📍 {getSchoolAddress(school)}
                       </p>
                     )}
                   </div>
@@ -888,40 +1143,36 @@ export default function SchoolsPage() {
 
                   <div
                     className="
-                      flex items-center justify-between
-                      mt-5 pt-4
-                      border-t border-[#1e2536]
-                    "
+                        flex items-center justify-between
+                        mt-4 pt-3
+                        border-t border-[#1e2536]
+                      "
                   >
-                    {/* EDIT */}
-
                     <button
                       type="button"
                       onClick={() => startEditSchool(school)}
                       className="
-                        text-blue-400
-                        hover:text-blue-300
-                        text-sm
-                        font-medium
-                      "
+                          text-blue-400
+                          hover:text-blue-300
+                          text-xs
+                          font-medium
+                        "
                     >
-                      Edit
+                      {t.edit}
                     </button>
-
-                    {/* HIDE */}
 
                     <button
                       type="button"
                       onClick={() => deleteSchool(school.id)}
                       className="
-                        p-2
-                        rounded-lg
-                        text-red-500
-                        hover:bg-red-500/10
-                        hover:text-red-400
-                        transition
-                      "
-                      title="Hide School"
+                          p-1.5
+                          rounded-lg
+                          text-red-500
+                          hover:bg-red-500/10
+                          hover:text-red-400
+                          transition
+                        "
+                      title={t.hideSchool}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -929,22 +1180,22 @@ export default function SchoolsPage() {
                         viewBox="0 0 24 24"
                         strokeWidth={1.8}
                         stroke="currentColor"
-                        className="w-5 h-5"
+                        className="w-4 h-4"
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           d="
-                            M6 7h12
-                            M9 7V5
-                            a1 1 0 0 1 1-1h4
-                            a1 1 0 0 1 1 1v2
-                            m2 0v12
-                            a2 2 0 0 1-2 2H9
-                            a2 2 0 0 1-2-2V7
-                            m3 4v6
-                            m4-6v6
-                          "
+                              M6 7h12
+                              M9 7V5
+                              a1 1 0 0 1 1-1h4
+                              a1 1 0 0 1 1 1v2
+                              m2 0v12
+                              a2 2 0 0 1-2 2H9
+                              a2 2 0 0 1-2-2V7
+                              m3 4v6
+                              m4-6v6
+                            "
                         />
                       </svg>
                     </button>
@@ -956,41 +1207,42 @@ export default function SchoolsPage() {
         ))}
       </div>
 
-      {/* EMPTY */}
+      {/* =========================
+          EMPTY
+      ========================= */}
 
       {visibleSchools.length === 0 && drafts.length === 0 && (
         <div
           className="
               bg-[#121622]
               border border-[#1e2536]
-              rounded-2xl
-              p-12
+              rounded-xl
+              p-8
               text-center
-              mt-5
+              mt-4
             "
         >
-          <div className="text-5xl mb-4">🏫</div>
+          <div className="text-4xl mb-3">🏫</div>
 
-          <p className="text-gray-300 text-lg">No Schools Found</p>
+          <p className="text-gray-300 text-base">{t.noSchools}</p>
 
-          <p className="text-gray-500 mt-2">
-            Click Add School to add your first school.
-          </p>
+          <p className="text-gray-500 text-sm mt-1">{t.addFirstSchool}</p>
 
           <button
             type="button"
             onClick={addSchoolCard}
             className="
-                mt-6
+                mt-5
                 bg-[#9E7C2F]
                 hover:bg-[#b58d36]
                 text-black
                 font-bold
-                px-5 py-3
+                px-4 py-2.5
                 rounded-xl
+                text-sm
               "
           >
-            + Add School
+            + {t.addSchool}
           </button>
         </div>
       )}

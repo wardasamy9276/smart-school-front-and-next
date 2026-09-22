@@ -66,7 +66,7 @@ export default function AdminDashboard() {
       try {
         setLoading(true);
         // محاكاة استدعاء حقيقي لـ Laravel API Endpoints
-        // const res = await fetch('http://127.0.0.1:8000/api/dashboard-stats');
+        const res = await fetch("http://127.0.0.1:8000/api/dashboard-stats");
 
         setTimeout(() => {
           setStats({

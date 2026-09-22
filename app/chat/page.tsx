@@ -26,67 +26,94 @@ export default function ChatPage() {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
-  const conversationId = 1; // رقم المحادثة الحالية
+  const conversationId = 1; // رقم المحادثة الحالية (يمكن ربطها لاحقاً بقائمة جانبية)
   const [currentUserId, setCurrentUserId] = useState<number | null>(null);
 
-  // جلب بيانات المستخدم الحالي من الـ localStorage عند فتح الصفحة
+  // جلب بيانات المستخدم الحالي
   useEffect(() => {
     const userData = localStorage.getItem("user_data");
     if (userData) {
       try {
-        const parsedUser = JSON.parse(userData);
-        setCurrentUserId(parsedUser.id);
+        const parsed = JSON.parse(userData);
+        setCurrentUserId(parsed.id);
       } catch (e) {
-        console.error("Error parsing user data", e);
+        console.error(e);
       }
     }
-    loadMessages();
   }, []);
 
-  // دالة تحميل الرسائل مع فحص استجابة السيرفر بدقة
-  const loadMessages = async () => {
+  // دالة تحميل الرسائل
+  const loadMessages = async (isBackground = false) => {
     try {
+      if (!isBackground) setLoading(true);
       setError("");
-      const token = localStorage.getItem("auth_token");
-      console.log("الـ Token المستخدم للتحميل:", token); // فحص هل التوكن موجود أصلاً؟
+
+      let token = localStorage.getItem("auth_token");
+      if (!token) {
+        const match = document.cookie.match(
+          new RegExp("(^| )jwtToken=([^;]+)"),
+        );
+        if (match) token = match[2];
+      }
 
       const response = await fetch(
         `${API_URL}/conversations/${conversationId}/messages`,
         {
           headers: {
             Accept: "application/json",
-            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
           },
+          credentials: "include",
         },
       );
 
       const result = await response.json();
-      console.log("نتيجة جلب الرسائل من السيرفر:", result); // فحص رد السيرفر
 
       if (!response.ok) {
         throw new Error(result.message || `خطأ من السيرفر: ${response.status}`);
       }
 
       if (result.success) {
-        setMessages([...result.data].reverse());
+        setMessages(
+          Array.isArray(result.data) ? [...result.data].reverse() : [],
+        );
       }
     } catch (err: any) {
-      console.error("خطأ تفصيلي:", err);
-      setError(err.message || "تعذر تحميل الرسائل");
+      console.error(err);
+      if (!isBackground) setError(err.message || "تعذر تحميل الرسائل");
     } finally {
-      setLoading(false);
+      if (!isBackground) setLoading(false);
     }
   };
 
-  // دالة إرسال رسالة جديدة
+  // التحميل الأولي + التحديث التلقائي (Auto-Polling كل 3 ثوانٍ)
+  useEffect(() => {
+    loadMessages(false);
+
+    const interval = setInterval(() => {
+      loadMessages(true); // تحديث في الخلفية بدون إظهار علامة التحميل
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [conversationId]);
+
+  // إرسال رسالة جديدة
   const sendMessage = async () => {
-    const messageText = newMessage.trim();
-    if (!messageText || sending) return;
+    const text = newMessage.trim();
+    if (!text || sending) return;
 
     try {
       setSending(true);
       setError("");
-      const token = localStorage.getItem("auth_token");
+
+      let token = localStorage.getItem("auth_token");
+      if (!token) {
+        const match = document.cookie.match(
+          new RegExp("(^| )jwtToken=([^;]+)"),
+        );
+        if (match) token = match[2];
+      }
 
       const response = await fetch(
         `${API_URL}/conversations/${conversationId}/messages`,
@@ -95,11 +122,10 @@ export default function ChatPage() {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Authorization: `Bearer ${token}`,
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
           },
-          body: JSON.stringify({
-            message: messageText,
-          }),
+          credentials: "include",
+          body: JSON.stringify({ message: text }),
         },
       );
 
@@ -109,6 +135,7 @@ export default function ChatPage() {
         throw new Error(result.message || "فشل إرسال الرسالة");
       }
 
+      // تحديث الرسائل فوراً بعد الإرسال الناجح
       setMessages((prev) => [...prev, result.data]);
       setNewMessage("");
     } catch (err: any) {
@@ -126,11 +153,17 @@ export default function ChatPage() {
     >
       <div className="mx-auto flex h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-white shadow-xl border border-slate-200">
         {/* Header */}
-        <div className="bg-emerald-700 px-6 py-5 text-white shadow-md">
-          <h1 className="text-xl font-bold">المحادثة الأكاديمية</h1>
-          <p className="mt-1 text-xs text-emerald-100">
-            التواصل الفوري بين الطالب والمعلم ضمن مجمع المدارس
-          </p>
+        <div className="bg-emerald-700 px-6 py-5 text-white shadow-md flex justify-between items-center">
+          <div>
+            <h1 className="text-xl font-bold">المحادثة الأكاديمية</h1>
+            <p className="mt-1 text-xs text-emerald-100">
+              التواصل الفوري بين الطالب والمعلم ضمن مجمع المدارس
+            </p>
+          </div>
+          <span className="flex items-center gap-1.5 text-xs bg-emerald-800 px-3 py-1 rounded-full text-emerald-200">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            متصل حياً
+          </span>
         </div>
 
         {/* Messages Area */}
