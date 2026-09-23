@@ -1,7 +1,11 @@
 import React from "react";
 
-function page() {
+export function generateStaticParams() {
+  return [{ id: "1" }];
+}
+
+function Page() {
   return <div></div>;
 }
 
-export default page;
+export default Page;
