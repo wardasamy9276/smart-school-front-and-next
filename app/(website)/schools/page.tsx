@@ -56,9 +56,9 @@ const mockSchools: School[] = [
     feesAr: "متوسطة إلى مرتفعة",
     feesEn: "Moderate to High",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة باستخدام أحدث تقنيات الـ ERP والـ LMS وأنظمة الحضور المتقدمة.",
+      "مجمع تعليمي متكامل يهدف لتقديم بيئة تعليمية ذكية ومبتكرة باستخدام أحدث تقنيات الـ ERP والـ LMS وأنظمة الحضور المتقدمة.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality using the latest ERP and LMS technologies.",
+      "An integrated educational complex aiming to provide a smart and innovative learning environment using the latest ERP and LMS technologies.",
   },
   {
     id: 2,
@@ -79,9 +79,9 @@ const mockSchools: School[] = [
     feesAr: "اقتصادية",
     feesEn: "Economical",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة مع تركيز قوي على القيم واللغات الأجنبية.",
+      "تتميز المدرسة بتركيزها القوي على القيم التربوية واللغات الأجنبية مع أنشطة طلابية متكاملة.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality with a strong focus on values and foreign languages.",
+      "The school is distinguished by its strong focus on educational values and foreign languages with integrated student activities.",
   },
   {
     id: 3,
@@ -102,9 +102,9 @@ const mockSchools: School[] = [
     feesAr: "مرتفعة",
     feesEn: "High",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة وفق المنهج البريطاني المعتمد.",
+      "تقدم المدرسة المنهج البريطاني المعتمد مع كادر تدريس دولي متميز وتوفير أنشطة عالمية المستوى.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality according to the accredited British curriculum.",
+      "The school offers the accredited British curriculum with an outstanding international teaching staff and world-class activities.",
   },
   {
     id: 4,
@@ -125,9 +125,9 @@ const mockSchools: School[] = [
     feesAr: "متوسطة",
     feesEn: "Moderate",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة مع دمج التكنولوجيا والبرمجة.",
+      "تركز المدرسة على دمج التكنولوجيا الحديثة والبرمجة في المراحل التعليمية المختلفة لتخريج جيل رقمي.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality integrating technology and programming.",
+      "The school focuses on integrating modern technology and programming into various educational stages to graduate a digital generation.",
   },
   {
     id: 5,
@@ -148,9 +148,9 @@ const mockSchools: School[] = [
     feesAr: "متوسطة",
     feesEn: "Moderate",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة تشجع التفكير النقدي والابتكار.",
+      "بيئة تعليمية محفزة تشجع التفكير النقدي والابتكار وتضم ملاعب ومختبرات علمية متطورة.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality encouraging critical thinking.",
+      "A stimulating learning environment encouraging critical thinking and innovation with advanced sports fields and scientific labs.",
   },
   {
     id: 6,
@@ -171,9 +171,9 @@ const mockSchools: School[] = [
     feesAr: "اقتصادية",
     feesEn: "Economical",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة عبر التفوق الدراسي والأنشطة.",
+      "تاريخ عريق في التفوق الدراسي والاهتمام بالنشاط الرياضي والثقافي لبناء شخصية متكاملة للطلاب.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality through academic excellence.",
+      "A rich history of academic excellence and focus on sports and cultural activities to build a well-rounded student personality.",
   },
   {
     id: 7,
@@ -194,9 +194,9 @@ const mockSchools: School[] = [
     feesAr: "اقتصادية",
     feesEn: "Economical",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة ونامية لمهارات الحاسب.",
+      "تقدم مناهج وزارة التربية والتعليم باللغات مع اهتمام خاص بتنمية مهارات الحاسب الآلي والأنشطة.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality and develop computer skills.",
+      "Offers Egyptian ministry curricula in languages with special focus on computer skills and activities.",
   },
   {
     id: 8,
@@ -217,9 +217,9 @@ const mockSchools: School[] = [
     feesAr: "اقتصادية جداً",
     feesEn: "Very Economical",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة مطابقة لمعايير الجودة.",
+      "مدرسة حكومية متميزة تطبق معايير الجودة والاعتماد التربوي وتضم معلمين ذوي خبرة عالية.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality meeting quality standards.",
+      "A distinguished public school applying quality and educational accreditation standards with highly experienced teachers.",
   },
   {
     id: 9,
@@ -240,9 +240,9 @@ const mockSchools: School[] = [
     feesAr: "متوسطة",
     feesEn: "Moderate",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة تجمع بين الأصالة والتقنية.",
+      "صرح تعليمي عريق يجمع بين أصالة المناهج المصرية ومواكبة التطور التقني والأنشطة الطلابية الواسعة.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality combining authenticity and technology.",
+      "A well-established educational edifice combining the authenticity of Egyptian curricula with technological advancement.",
   },
   {
     id: 10,
@@ -263,9 +263,9 @@ const mockSchools: School[] = [
     feesAr: "مرتفعة",
     feesEn: "High",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة بأحدث البرامج الأمريكية.",
+      "تعتمد على أحدث البرامج التعليمية الأمريكية وتوفير بيئة تفاعلية تدعم التفكير الإبداعي.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality with modern American programs.",
+      "Relies on modern American educational programs and provides an interactive environment supporting creative thinking.",
   },
   {
     id: 11,
@@ -286,9 +286,9 @@ const mockSchools: School[] = [
     feesAr: "متوسطة",
     feesEn: "Moderate",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة ومنظومة تربوية آمنة.",
+      "بيئة تعليمية آمنة ومنظومة تربوية حديثة تهتم بالقرآن الكريم واللغات والأنشطة الرياضية.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality and a secure educational system.",
+      "A safe learning environment and modern educational system focusing on values, languages, and sports.",
   },
   {
     id: 12,
@@ -309,9 +309,9 @@ const mockSchools: School[] = [
     feesAr: "مرتفعة جداً",
     feesEn: "Very High",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة بشهادات معتمدة ومختبرات روبوتكس.",
+      "واحدة من أقوى المدارس الدولية التي تقدم شهادات معتمدة مع معسكرات تدريبية ومختبرات روبوتكس.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality with certified certificates.",
+      "One of the top international schools offering accredited certificates with training camps and robotics labs.",
   },
   {
     id: 13,
@@ -332,9 +332,9 @@ const mockSchools: School[] = [
     feesAr: "متوسطة إلى مرتفعة",
     feesEn: "Moderate to High",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة تجمع العراقة والأساليب الحديثة.",
+      "تجمع المدرسة بين العراقة والأساليب الحديثة في التدريس وتهتم بالأنشطة الفنية والموسيقية والرياضية.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality combining tradition and modern methods.",
+      "Combines tradition with modern teaching methods, focusing on arts, music, and sports activities.",
   },
   {
     id: 14,
@@ -355,9 +355,9 @@ const mockSchools: School[] = [
     feesAr: "متوسطة",
     feesEn: "Moderate",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة بفصول ذكية ومناهج مطورة.",
+      "فصول ذكية مجهزة بالكامل ومناهج متطورة لتنمية مهارات الفهم والتحليل لدى الطلاب.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality with smart classrooms.",
+      "Fully equipped smart classrooms and advanced curricula to develop students' comprehension and analytical skills.",
   },
   {
     id: 15,
@@ -378,9 +378,9 @@ const mockSchools: School[] = [
     feesAr: "مرتفعة",
     feesEn: "High",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة في العاصمة الإدارية.",
+      "صرح تعليمي حديث في العاصمة الإدارية يطبق أحدث نظم التعليم الذكي والأنظمة الرقمية الكاملة.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality in the New Capital.",
+      "A modern educational edifice in the New Capital implementing smart education and full digital systems.",
   },
   {
     id: 16,
@@ -401,9 +401,9 @@ const mockSchools: School[] = [
     feesAr: "اقتصادية",
     feesEn: "Economical",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة برعاية خاصة لكل طالب.",
+      "مدرسة عريقة تتميز بالالتزام الأخلاقي والتعليمي وتوفير رعاية خاصة لكل طالب.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality with special care.",
+      "A well-known school characterized by moral and educational commitment and special care for each student.",
   },
   {
     id: 17,
@@ -424,9 +424,9 @@ const mockSchools: School[] = [
     feesAr: "مرتفعة",
     feesEn: "High",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة وفق المنهج البريطاني.",
+      "منهج بريطاني معتمد، طاقم تدريس أجنبي ومحلي متميز، وأنشطة لا منهجية واسعة النطاق.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality under the British curriculum.",
+      "Accredited British curriculum, outstanding foreign and local teaching staff, and extensive extracurricular activities.",
   },
   {
     id: 18,
@@ -447,9 +447,9 @@ const mockSchools: School[] = [
     feesAr: "اقتصادية",
     feesEn: "Economical",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة وقدرات علمية مبسطة.",
+      "تسعى دائماً لتطوير قدرات الطلاب العلمية واللغوية بأساليب مبسطة وتفاعلية.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality and simplified scientific abilities.",
+      "Always strives to develop students' scientific and linguistic abilities through simplified and interactive methods.",
   },
   {
     id: 19,
@@ -470,9 +470,9 @@ const mockSchools: School[] = [
     feesAr: "اقتصادية",
     feesEn: "Economical",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة وتنمية المهارات السلوكية.",
+      "مدرسة رائدة في تنمية المهارات السلوكية والتعليمية وتوفير مناخ مناسب للتفوق.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality and develop behavioral skills.",
+      "A leading school in developing behavioral and educational skills and providing a suitable climate for excellence.",
   },
   {
     id: 20,
@@ -493,9 +493,9 @@ const mockSchools: School[] = [
     feesAr: "مرتفعة جداً",
     feesEn: "Very High",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة بحرم جامعي مصغر ومسبح أولمبي.",
+      "حرم جامعي مصغر يضم أحدث القاعات التكنولوجية والملاعب الرياضية والمسبح الأولمبي.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality with a mini campus.",
+      "A mini campus featuring the latest tech halls, sports fields, and an Olympic swimming pool.",
   },
   {
     id: 21,
@@ -516,9 +516,9 @@ const mockSchools: School[] = [
     feesAr: "اقتصادية",
     feesEn: "Economical",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة بتعليم قوي ومصروفات حكومية.",
+      "مدرسة تجريبية متميزة تقدم تعليماً قوياً باللغات الإنجليزية والفرنسية وبمصروفات حكومية مناسبة.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality with strong public education.",
+      "A distinguished experimental school offering strong education in English and French at affordable public fees.",
   },
   {
     id: 22,
@@ -539,9 +539,9 @@ const mockSchools: School[] = [
     feesAr: "متوسطة",
     feesEn: "Moderate",
     descriptionAr:
-      "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة بالتعلم الذكي والأنشطة.",
+      "تعتمد على أساليب التعلم الذكي وتفعيل الأنشطة الثقافية والرياضية لصقل مواهب الطلاب.",
     descriptionEn:
-      "We provide an educational environment that evolves with the student at every age stage to build an integrated academic personality through smart learning.",
+      "Relies on smart learning methods and activates cultural and sports activities to hone student talents.",
   },
 ];
 
@@ -593,10 +593,9 @@ export default function SchoolsBrowsePage() {
       className="min-h-screen bg-slate-950 text-slate-100 p-6 md:p-12 font-sans"
       dir={isAr ? "rtl" : "ltr"}
     >
-      {/* تم استخدام h-auto و items-start لتجنب أي مساحات فارغة كبيرة أسفل الكروت */}
-      <div className="max-w-7xl mx-auto space-y-6 h-auto flex flex-col justify-start">
+      <div className="max-w-7xl mx-auto space-y-8">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-6">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
               <GraduationCap className="w-8 h-8 text-amber-400" />
@@ -604,7 +603,7 @@ export default function SchoolsBrowsePage() {
             </h1>
             <p className="text-slate-400 mt-1">
               {isAr
-                ? "نقدم بيئة تعليمية تتطور مع الطالب في كل مرحلة عمرية لبناء شخصية أكاديمية متكاملة."
+                ? "استكشف أفضل المدارس، المناهج، وقدم طلبات الالتحاق بسهولة تامة."
                 : "Explore the best schools, curriculums, and easily apply for admission."}
             </p>
           </div>
@@ -661,7 +660,7 @@ export default function SchoolsBrowsePage() {
         </div>
 
         {/* Schools Grid (Displaying exactly 6 items per page) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentSchools.map((school) => {
             const name = isAr ? school.nameAr : school.nameEn;
             const type = isAr ? school.typeAr : school.typeEn;
@@ -734,7 +733,7 @@ export default function SchoolsBrowsePage() {
                 <div className="p-5 pt-0">
                   <button
                     onClick={() => setSelectedSchool(school)}
-                    className="w-full bg-gradient-to-r from-[#9F7A24] via-[#FFF1A8] to-[#C9A227] hover:from-[#C9A227] hover:via-[#FFF8C7] hover:to-[#B88A16] text-slate-950 font-bold py-3.5 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-[#D4AF37]/30 flex items-center justify-center gap-2"
+                    className="w-full bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-slate-950 font-bold py-3.5 rounded-xl text-sm transition-all shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2"
                   >
                     <span>
                       {isAr
@@ -753,7 +752,7 @@ export default function SchoolsBrowsePage() {
 
         {/* Pagination Controls */}
         {filteredSchools.length > itemsPerPage && (
-          <div className="flex justify-center items-center gap-4 pt-2 pb-2">
+          <div className="flex justify-center items-center gap-4 pt-6">
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
@@ -793,7 +792,7 @@ export default function SchoolsBrowsePage() {
 
         {/* Empty State */}
         {filteredSchools.length === 0 && (
-          <div className="text-center py-12 bg-slate-900/30 rounded-2xl border border-slate-800/80">
+          <div className="text-center py-16 bg-slate-900/30 rounded-2xl border border-slate-800/80">
             <GraduationCap className="w-12 h-12 text-slate-600 mx-auto mb-3" />
             <h3 className="text-lg font-semibold text-slate-300">
               {isAr
